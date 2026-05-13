@@ -5,7 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
 
 $routes->group('auth', function($routes) {
     $routes->get('login', 'AuthController::login');
@@ -13,4 +12,11 @@ $routes->group('auth', function($routes) {
     $routes->get('logout', 'AuthController::logout');
 });
 
+$routes->get('emp/index', 'EmpController::index');
+$routes->get('formconge', 'EmpController::formconge');
+$routes->get('demandeconge', 'EmpController::demadeconge');
+
+$routes->group('emp', ['filter' => 'role:employe'], function($routes) {
+    // $routes->get('profil', 'EmpController::profil');
+});
 
