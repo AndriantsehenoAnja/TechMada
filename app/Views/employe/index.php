@@ -1,3 +1,7 @@
+<?php $this->extend('layout/main') ?>
+<?php $this->section('title'); ?>TechMada RH - Espace employé<?php $this->endSection(); ?>
+<?php $this->section('content') ?>
+
 <section id="page-mes-conges" style="margin-top:3rem">
 <div class="app-wrap">
 
@@ -105,3 +109,4 @@
 </div>
 </section>
 
+<?php $this->endSection() ?>

@@ -1,3 +1,6 @@
+<?php $this->extend('layout/main') ?>
+<?php $this->section('title'); ?>TechMada RH - Login<?php $this->endSection(); ?>
+<?php $this->section('content') ?>
 
 <section id="page-login">
 <div class="auth-page geo-bg">
@@ -58,3 +61,5 @@
 </div>
 </div>
 </section>
+
+<?php $this->endSection() ?>
