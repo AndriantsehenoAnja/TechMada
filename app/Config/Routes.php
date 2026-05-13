@@ -13,4 +13,18 @@ $routes->group('auth', function($routes) {
     $routes->get('logout', 'AuthController::logout');
 });
 
+$routes->get('demandes', 'DemandeController::index');
+$routes->post('demandes/create', 'DemandeController::create');
+$routes->get('employe/dashboard', 'AdminController::dashboard');
+// // $routes->group('admin', ['filter' => 'auth'], function($routes) {
+// // });
+
+// $routes->get('dashboard', 'RhController::dashboard');
+// $routes->group('rh', ['filter' => 'auth'], function($routes) {
+// });
+
+// $routes->get('dashboard', 'EmployeController::dashboard');
+// $routes->group('employe', ['filter' => 'auth'], function($routes) {
+// });
+
 
