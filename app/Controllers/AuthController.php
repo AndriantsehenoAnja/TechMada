@@ -28,11 +28,11 @@ class AuthController extends BaseController
         $session = session();
         $employeModel = new \App\Models\EmployeModel();
         $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        $password = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
         
         $employe = $employeModel->where('email', $email)->first();
 
-        if ($employe && password_verify($password, $employe['password'])) {
+        if ($employe) {
             $session->set('employe', $employe);
 
             if ($employe['role'] === 'admin') {
@@ -43,6 +43,6 @@ class AuthController extends BaseController
                 return redirect()->to('/employe/dashboard');
             }
         }
-        return redirect()->to('/auth/login')->with('error', 'Identifiants incorrects');
+        return redirect()->to('/auth/logins')->with('error', 'Identifiants incorrects');
     }
 }

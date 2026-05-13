@@ -46,11 +46,11 @@
     <form method="POST" action="/auth/login" style="margin-top:1.5rem">
       <div class="f-group">
         <label class="f-label">Adresse email</label>
-        <input name="email" type="email" class="f-input" placeholder="vous@techmada.mg" value="employe@techmada.mg"/>
+        <input name="email" type="email" class="f-input" placeholder="vous@techmada.mg"/>
       </div>
       <div class="f-group">
         <label class="f-label">Mot de passe</label>
-        <input name="password" type="password" class="f-input" placeholder="••••••••" value="emp123"/>
+        <input name="password" type="password" class="f-input" placeholder="••••••••"/>
       </div>
       <button type="submit" class="btn-primary" style="margin-top:.5rem">
         Se connecter <i class="bi bi-arrow-right-short"></i>

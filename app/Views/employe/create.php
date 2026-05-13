@@ -43,15 +43,14 @@
         <div>
           <div class="form-section">
             <h3>Détails de la demande</h3>
-
+            <form action="/demandes/create" method="post">
             <div class="f-group" style="margin-bottom:1rem">
               <label class="f-label">Type de congé <span style="color:var(--danger)">*</span></label>
               <select class="f-select">
-                <option value="">-- Choisir un type --</option>
-                <option value="1" selected>Congé annuel (18 j restants)</option>
-                <option value="2">Congé maladie (8 j restants)</option>
-                <option value="3">Congé spécial (1 j restant)</option>
-                <option value="4">Sans solde</option>
+                <?php foreach ($typesConge as $type): ?>
+                  <option value="<?= $type['id'] ?>"><?= $type['libelle'] ?> (j restants)</option>
+                <?php endforeach; ?>
+        
               </select>
               <!-- Erreur validation CI4 -->
               <div class="f-error"><i class="bi bi-exclamation-circle"></i> Ce champ est requis.</div>
@@ -84,6 +83,7 @@
               <button class="btn-forest" type="submit"><i class="bi bi-send"></i> Soumettre la demande</button>
               <a href="#page-dashboard-employe" class="btn-secondary"><i class="bi bi-x"></i> Annuler</a>
             </div>
+            </form>
           </div>
         </div>
 
