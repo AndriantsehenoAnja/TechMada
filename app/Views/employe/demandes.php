@@ -15,8 +15,13 @@
         .container-main { padding: 2rem; }
         .card { border: 1px solid #dde8e1; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,.05); }
     </style>
+    <script src="<?= base_url('assets/js/calendar.js') ?>"></script>
+
 </head>
 <body>
+    <button onclick="Calendrier()">Afficher le Calendrier</button>
+    <button onclick="historique()">Afficher l'Historique</button>
+
     <div class="row g-0 min-vh-100">
         <div class="col-auto sidebar p-3">
             <h3 style="color: white; margin-bottom: 2rem;"><i class="bi bi-people"></i> Mon espace</h3>
@@ -93,7 +98,53 @@
             </div>
         </div>
     </div>
+    
+<div id="calendrier" style="display:none;">
+    <h2>Calendrier des Congés</h2>
+    <div id="calendrier-contenu"></div>
+</div>
+<div id="historique" style="display:none;">
+    <h2>Historique des Congés</h2>
+    <div id="historique-contenu"></div>
+</div>
+<script>
+    function Calendrier() {
+        const calendrier = document.getElementById('calendrier');
+        const contenu = document.getElementById('calendrier-contenu');
+        if (calendrier.style.display === 'none') {
+            calendrier.style.display = 'block';
+            const calendar = new FullCalendar.Calendar(contenu, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: <?= json_encode($demandes) ?>.map(conge => ({
+                    title: `${conge.type_conge} (${conge.statut === 'approuvee' ? 'Approuvé' : (conge.statut === 'en_attente' ? 'En attente' : 'Refusé')})`,
+                    start: conge.date_debut,
+                    end: conge.date_fin,
+                    color: conge.statut === 'approuvee' ? 'green' : (conge.statut === 'en_attente' ? 'orange' : 'red')
+                }))
+            });
+            calendar.render();
+        } else {
+            calendrier.style.display = 'none';
+        }
+    }
 
+    function historique() {
+        const historique = document.getElementById('historique');
+        const contenu = document.getElementById('historique-contenu');
+        if (historique.style.display === 'none') {
+            historique.style.display = 'block';
+            
+        } else {
+            historique.style.display = 'none';
+        }
+    }
+</script>
     <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 </body>
 </html>

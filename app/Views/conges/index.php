@@ -8,7 +8,7 @@
     <link href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 </head>
 <body>
-<div class="container py-4">
+    <div class="container py-4">
 <h1 class="mb-3">Liste des congés</h1>
 
 <p><a class="btn btn-secondary btn-sm" href="<?= site_url('conges') ?>">Actualiser</a></p>
@@ -43,6 +43,6 @@
         </tr>
     <?php endif; ?>
 </table>
-</div>
+
 </body>
 </html>

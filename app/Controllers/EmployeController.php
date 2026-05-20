@@ -48,7 +48,7 @@ class EmployeController extends Controller
 
         $employeeId = (int) $this->session->get('user_id');
         $db = Database::connect();
-
+        // $typesConge = new App\Models\;
         $demandes = $db->table('conges')
             ->select('conges.*, types_conge.libelle as type_conge')
             ->join('types_conge', 'types_conge.id = conges.type_conge_id')

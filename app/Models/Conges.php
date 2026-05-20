@@ -9,7 +9,6 @@ class Conges extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['id', 'employe_id', 'type_conge_id', 'date_debut', 'date_fin', 'nb_jours', 'motif', 'statut', 'commentaire_rh', 'created_at', 'traite_par'];
 
- 
     public function findAllwithdetails(int $limit = 0, int $offset = 0)
     {
        $db = \Config\Database::connect();
@@ -24,7 +23,7 @@ class Conges extends Model
        
        return $builder->get()->getResultArray();
     }
-    
+    // uytre
     #[Override]
     public function find($id = null)
     {
